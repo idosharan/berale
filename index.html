@@ -193,6 +193,13 @@
             font-weight: 900;
             font-size: 1.3rem;
             box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .day-header .day-num:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 26px rgba(212, 175, 55, 0.55);
         }
 
         .day-header h2 {
@@ -760,5 +767,14 @@
             <p>נסיעה טובה ובטוחה! ✦ London 2026</p>
         </footer>
     </main>
+    <script>
+        document.querySelectorAll('.day-num').forEach(function (el) {
+            el.setAttribute('role', 'button');
+            el.setAttribute('aria-label', 'חזרה לראש העמוד');
+            el.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
 </body>
 </html>
