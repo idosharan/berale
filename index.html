@@ -93,6 +93,72 @@
             margin: 26px auto 0;
         }
 
+        /* ===== Date Navigation ===== */
+        .date-nav {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px auto 0;
+            max-width: 620px;
+        }
+
+        .date-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 78px;
+            padding: 10px 14px;
+            text-decoration: none;
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            border-radius: 14px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .date-nav a .dn-day {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .date-nav a .dn-date {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--gold-light);
+            direction: ltr;
+            line-height: 1.2;
+        }
+
+        .date-nav a:hover,
+        .date-nav a:focus-visible {
+            transform: translateY(-4px);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-color: var(--gold);
+            box-shadow: 0 10px 22px rgba(212, 175, 55, 0.4);
+        }
+
+        .date-nav a:hover .dn-day,
+        .date-nav a:hover .dn-date,
+        .date-nav a:focus-visible .dn-day,
+        .date-nav a:focus-visible .dn-date {
+            color: var(--navy);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .day {
+            scroll-margin-top: 20px;
+        }
+
         /* ===== Layout ===== */
         .container {
             max-width: 860px;
@@ -230,6 +296,57 @@
             fill: var(--navy);
         }
 
+        /* ===== Shopping Section ===== */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+        }
+
+        .shop-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--gold);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shop-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 40px rgba(15, 30, 61, 0.2);
+        }
+
+        .shop-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background: var(--cream);
+            padding: 18px;
+        }
+
+        .shop-card .shop-body {
+            padding: 20px 22px 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .shop-card h3 {
+            font-size: 1.25rem;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .shop-card p {
+            color: var(--text-soft);
+            font-size: 1rem;
+            margin-bottom: 16px;
+            flex: 1;
+        }
+
         /* ===== Footer ===== */
         footer {
             text-align: center;
@@ -247,11 +364,43 @@
             .event {
                 padding: 18px 18px;
             }
+            .event h3 {
+                font-size: 1.12rem;
+            }
             .event::before {
                 right: -28px;
             }
             header {
-                padding: 50px 18px 80px;
+                padding: 50px 16px 80px;
+            }
+            .container {
+                padding: 0 14px;
+            }
+            .map-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .date-nav {
+                gap: 8px;
+                margin-top: 24px;
+            }
+            .date-nav a {
+                min-width: 0;
+                flex: 1 1 56px;
+                padding: 8px 6px;
+                border-radius: 12px;
+            }
+            .date-nav a .dn-day {
+                font-size: 0.7rem;
+            }
+            .date-nav a .dn-date {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .date-nav a .dn-day {
+                display: none;
             }
         }
     </style>
@@ -262,12 +411,19 @@
         <h1>London Trip 2026 🇬🇧</h1>
         <p class="dates">2.7.2026 — 6.7.2026</p>
         <div class="gold-line"></div>
+        <nav class="date-nav" aria-label="ניווט לפי תאריך">
+            <a href="#day-1"><span class="dn-day">חמישי</span><span class="dn-date">2.7</span></a>
+            <a href="#day-2"><span class="dn-day">שישי</span><span class="dn-date">3.7</span></a>
+            <a href="#day-3"><span class="dn-day">שבת</span><span class="dn-date">4.7</span></a>
+            <a href="#day-4"><span class="dn-day">ראשון</span><span class="dn-date">5.7</span></a>
+            <a href="#day-5"><span class="dn-day">שני</span><span class="dn-date">6.7</span></a>
+        </nav>
     </header>
 
     <main class="container">
 
         <!-- ===== יום חמישי ===== -->
-        <section class="day">
+        <section class="day" id="day-1">
             <div class="day-header">
                 <div class="day-num">1</div>
                 <h2>יום חמישי, 2 ביולי 2026</h2>
@@ -281,8 +437,8 @@
                 <article class="event">
                     <span class="time">21:00</span>
                     <h3>🏨 צ'ק-אין במלון</h3>
-                    <p>התארגנות ומנוחה במלון באזור King's Cross.</p>
-                    <a class="map-btn" href="https://maps.google.com/?q=King's+Cross,+London" target="_blank" rel="noopener">
+                    <p>התארגנות ומנוחה במלון Premier Inn London King's Cross. מלון מרכזי ונוח במרחק הליכה קצר מתחנת הרכבת King's Cross / St Pancras, קרוב לתחבורה ציבורית ולאטרקציות. כתובת: 26-30 York Way, London N1 9AA.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Premier+Inn+London+King's+Cross,+26-30+York+Way,+London+N1+9AA" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
                         פתח ב-Google Maps
                     </a>
@@ -291,23 +447,64 @@
         </section>
 
         <!-- ===== יום שישי ===== -->
-        <section class="day">
+        <section class="day" id="day-2">
             <div class="day-header">
                 <div class="day-num">2</div>
-                <h2>יום שישי, 3 ביולי 2026</h2>
+                <h2>יום שישי, 3 ביולי 2026 — ערב מטאליקה 🎸</h2>
             </div>
             <div class="timeline">
                 <article class="event">
+                    <span class="time">09:30</span>
+                    <h3>🎡 London Eye</h3>
+                    <p>פתיחת היום עם גלגל הענק המפורסם של לונדון על גדת הנהר — תצפית פנורמית מרהיבה על העיר. סבב אחד נמשך כ-30 דקות. כתובת: Riverside Building, County Hall, London SE1 7PB.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=London+Eye,+Riverside+Building,+County+Hall,+London+SE1+7PB" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                </article>
+                <article class="event">
+                    <span class="time">10:30</span>
+                    <h3>🚤 London Eye River Cruise</h3>
+                    <p>שייט נהר מודרך לאורך התמזה (כ-40 דקות) עם נוף לבית הפרלמנט, ביג בן, גשר לונדון ומגדל לונדון. ההמראה ממזח London Eye Pier, צמוד לגלגל.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=London+Eye+Pier,+London+SE1+7PB" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                </article>
+                <article class="event">
+                    <span class="time">11:30</span>
+                    <h3>🏰 The London Dungeon</h3>
+                    <p>אטרקציה אינטראקטיבית ומצמררת המגוללת את ההיסטוריה האפלה של לונדון עם שחקנים חיים, אפקטים מיוחדים ורכבת מתחת לאדמה. צמוד ל-London Eye. כתובת: Riverside Building, County Hall, London SE1 7PB.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=The+London+Dungeon,+County+Hall,+London+SE1+7PB" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                </article>
+                <article class="event">
                     <span class="time">14:00</span>
                     <h3>🍛 ארוחת צהריים במסעדת Dishoom</h3>
-                    <p>מסעדה הודית פופולרית באווירת בומביי. 5 Stable Street, London N1C 4AB.</p>
+                    <p>מסעדה הודית פופולרית באווירת בומביי — צמוד למלון באזור King's Cross. 5 Stable Street, London N1C 4AB.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Dishoom+King's+Cross,+5+Stable+Street,+London+N1C+4AB" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
                         פתח ב-Google Maps
                     </a>
                 </article>
                 <article class="event">
+                    <span class="time">15:30</span>
+                    <h3>😴 מנוחה במלון</h3>
+                    <p>שעה-שעתיים מנוחה והתרעננות לפני ההופעה. חזרה למלון Premier Inn King's Cross.</p>
+                </article>
+                <article class="event">
                     <span class="time">17:00</span>
+                    <h3>🚇 יציאה לכיוון האצטדיון האולימפי</h3>
+                    <p>יוצאים מהמלון לכיוון Stratford. נסיעה ברכבת התחתית מ-King's Cross כ-25 דקות.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=London+Olympic+Stadium" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                </article>
+                <article class="event">
+                    <span class="time">19:00</span>
                     <h3>🎸 הופעה של מטאליקה (M72 World Tour)</h3>
                     <p>ערב ראשון של ההופעה המטורפת באצטדיון האולימפי בלונדון.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=London+Olympic+Stadium" target="_blank" rel="noopener">
@@ -319,17 +516,75 @@
         </section>
 
         <!-- ===== יום שבת ===== -->
-        <section class="day">
+        <section class="day" id="day-3">
             <div class="day-header">
                 <div class="day-num">3</div>
-                <h2>יום שבת, 4 ביולי 2026</h2>
+                <h2>יום שבת, 4 ביולי 2026 — יום ה-West End 🎭</h2>
             </div>
             <div class="timeline">
                 <article class="event">
+                    <span class="time">10:30</span>
+                    <h3>🎡 Piccadilly Circus</h3>
+                    <p>מתחילים את היום באחד הצמתים המפורסמים בלונדון — מסכי הניאון, מזרקת ארוס והאווירה התוססת. נקודת פתיחה מצוינת לחקור את הווסט אנד ברגל.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Piccadilly+Circus,+London+W1J+9HS" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                </article>
+                <article class="event">
+                    <span class="time">11:30</span>
+                    <h3>👽 Forbidden Planet</h3>
+                    <p>חנות הקאלט הגדולה בלונדון לקומיקס, מדע בדיוני, פיגרים ומרצ'נדייז — במרחק הליכה קצר. 179 Shaftesbury Ave, London WC2H 8JR.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Forbidden+Planet,+179+Shaftesbury+Avenue,+London+WC2H+8JR" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                </article>
+                <article class="event">
+                    <span class="time">12:15</span>
+                    <h3>🐰 Alice Through The Looking Glass</h3>
+                    <p>חנות מקסימה המוקדשת לעולמה של "עליסה בארץ הפלאות" — מתנות, מזכרות ופריטי אספנות ייחודיים. ממוקמת בשוק קובנט גארדן, במרחק הליכה. כתובת: The Piazza, Covent Garden, London WC2E 8RB.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Alice+Through+The+Looking+Glass+Covent+Garden,+London+WC2E+8RB" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                </article>
+                <article class="event">
                     <span class="time">13:00</span>
                     <h3>🍝 ארוחת צהריים - Jamie's Italian Leicester Square</h3>
-                    <p>ארוחה איטלקית קלאסית באווירה טובה. 17-18 Irving St, London WC2H 7AU, בריטניה.</p>
+                    <p>ארוחה איטלקית קלאסית באווירה טובה, בלב Leicester Square. 17-18 Irving St, London WC2H 7AU, בריטניה.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Jamie's+Italian+Leicester+Square,+17-18+Irving+St,+London+WC2H+7AU" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                </article>
+                <article class="event">
+                    <span class="time">14:00</span>
+                    <h3>🍫 M&M's World London</h3>
+                    <p>חנות הענק של M&M's על פני 4 קומות בלב Leicester Square — קיר ענק של ממתקים בכל הצבעים, מרצ'נדייז וצילומים מהנים. כתובת: 1 Swiss Court, Leicester Square, London W1D 6AP.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=M%26M's+World+London,+1+Swiss+Court,+Leicester+Square,+London+W1D+6AP" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                </article>
+                <article class="event">
+                    <span class="time">14:30</span>
+                    <h3>🎭 Leicester Square & Covent Garden</h3>
+                    <p>הסתובבות בכיכר Leicester Square התוססת ושיטוט בשוק המקורה של קובנט גארדן. הכל במרחק הליכה.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Covent+Garden+London+WC2E+8RB" target="_blank" rel="noopener">
+                        פתח ב-Google Maps
+                    </a>
+                </article>
+                <article class="event">
+                    <span class="time">16:30</span>
+                    <h3>☕ מנוחה לפני ההצגה</h3>
+                    <p>שעה-שעתיים הפוגה בבית קפה באזור Strand / Covent Garden, ממש ליד התיאטרון — בלי לחזור למלון, חוסכים זמן ונסיעות.</p>
+                </article>
+                <article class="event">
+                    <span class="time">19:00</span>
+                    <h3>🪲 המחזמר Beetlejuice</h3>
+                    <p>המחזמר המוזיקלי המצליח Beetlejuice the Musical בתיאטרון Savoy Theatre ב-West End. קומדיה מטורפת וסוחפת המבוססת על סרטו של טים ברטון, עם אפקטים מרהיבים ומוזיקה מקורית. משך המופע כ-2.5 שעות. כתובת: Savoy Theatre, Savoy Court, Strand, London WC2R 0ET.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Savoy+Theatre,+Savoy+Court,+Strand,+London+WC2R+0ET" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
                         פתח ב-Google Maps
                     </a>
@@ -338,17 +593,17 @@
         </section>
 
         <!-- ===== יום ראשון ===== -->
-        <section class="day">
+        <section class="day" id="day-4">
             <div class="day-header">
                 <div class="day-num">4</div>
-                <h2>יום ראשון, 5 ביולי 2026</h2>
+                <h2>יום ראשון, 5 ביולי 2026 — ערב מטאליקה 🎸</h2>
             </div>
             <div class="timeline">
                 <article class="event">
-                    <span class="time">11:00</span>
-                    <h3>🛍️ זמן חופשי בעיר</h3>
-                    <p>הסתובבות, קניות וזמן פנוי באזור קובנט גארדן ומרכז העיר.</p>
-                    <a class="map-btn" href="https://maps.google.com/?q=Covent+Garden+London" target="_blank" rel="noopener">
+                    <span class="time">10:00</span>
+                    <h3>🌸 גן קיוטו (Kyoto Garden)</h3>
+                    <p>בוקר רגוע בגן יפני מרהיב בלב Holland Park, עם מפל מים, בריכת נוי, דגי קוי וטווסים. כניסה חופשית, פתיחה מושלמת ליום. כתובת: Holland Park, Ilchester Place, London W8 6LU.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Kyoto+Garden+Holland+Park,+Ilchester+Place,+London+W8+6LU" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
                         פתח ב-Google Maps
                     </a>
@@ -356,14 +611,37 @@
                 <article class="event">
                     <span class="time">12:45</span>
                     <h3>🌇 תצפית Sky Garden</h3>
-                    <p>תצפית פנורמית מרהיבה על לונדון מהגינה הגבוהה בעיר. 20 Fenchurch St, London EC3M 8AF.</p>
+                    <p>נסיעה מזרחה אל ה-City לתצפית פנורמית מרהיבה על לונדון מהגינה הגבוהה בעיר (כניסה עם כרטיס מוזמן מראש). 20 Fenchurch St, London EC3M 8AF.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Sky+Garden,+20+Fenchurch+St,+London+EC3M+8AF" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
                         פתח ב-Google Maps
                     </a>
                 </article>
                 <article class="event">
+                    <span class="time">14:00</span>
+                    <h3>🍔 ארוחת צהריים ב-City</h3>
+                    <p>ארוחה קלה באזור Leadenhall Market ההיסטורי והמרשים, צמוד ל-Sky Garden.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Leadenhall+Market,+London+EC3V+1LT" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                </article>
+                <article class="event">
+                    <span class="time">15:30</span>
+                    <h3>😴 מנוחה במלון</h3>
+                    <p>חזרה למלון לשעה-שעתיים מנוחה והתרעננות לפני ההופעה.</p>
+                </article>
+                <article class="event">
                     <span class="time">17:00</span>
+                    <h3>🚇 יציאה לכיוון האצטדיון האולימפי</h3>
+                    <p>יוצאים מהמלון לכיוון Stratford להופעה השנייה.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=London+Olympic+Stadium" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                </article>
+                <article class="event">
+                    <span class="time">19:00</span>
                     <h3>🎸 הופעה של מטאליקה (M72 World Tour)</h3>
                     <p>ערב שני וסוגר של ההופעה באצטדיון האולימפי בלונדון.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=London+Olympic+Stadium" target="_blank" rel="noopener">
@@ -375,16 +653,21 @@
         </section>
 
         <!-- ===== יום שני ===== -->
-        <section class="day">
+        <section class="day" id="day-5">
             <div class="day-header">
                 <div class="day-num">5</div>
-                <h2>יום שני, 6 ביולי 2026</h2>
+                <h2>יום שני, 6 ביולי 2026 — יום אחרון 🧳</h2>
             </div>
             <div class="timeline">
                 <article class="event">
+                    <span class="time">09:30</span>
+                    <h3>🧳 צ'ק-אאוט והפקדת מזוודות</h3>
+                    <p>צ'ק-אאוט מהמלון בבוקר והשארת המזוודות בעמדת השמירה של המלון — יוצאים ליום אחרון קליל בלי המזוודות.</p>
+                </article>
+                <article class="event">
                     <span class="time">10:30</span>
                     <h3>🦕 מוזיאון ההיסטוריה של הטבע</h3>
-                    <p>כניסה למוזיאון המפורסם בדרום קנזינגטון (10:30–12:30).</p>
+                    <p>כניסה למוזיאון המפורסם בדרום קנזינגטון (10:30–12:30), עם כרטיס מוזמן מראש.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Natural+History+Museum+London" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
                         פתח ב-Google Maps
@@ -392,13 +675,82 @@
                 </article>
                 <article class="event">
                     <span class="time">13:00</span>
-                    <h3>🧳 צ'ק-אאוט מהמלון</h3>
-                    <p>אריזות ויציאה לכיוון שדה התעופה.</p>
+                    <h3>🛍️ ארוחה וקניות אחרונות</h3>
+                    <p>ארוחת צהריים וזמן חופשי באזור South Kensington / Kensington High Street לקניות אחרונות (Whole Foods, Sephora ועוד), לפני החזרה למלון.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Kensington+High+Street,+London+W8" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        פתח ב-Google Maps
+                    </a>
                 </article>
                 <article class="event">
-                    <span class="time">16:00</span>
+                    <span class="time">17:00</span>
+                    <h3>🚕 יציאה מהמלון לשדה התעופה</h3>
+                    <p>איסוף המזוודות מהמלון ויציאה לכיוון שדה התעופה.</p>
+                </article>
+                <article class="event">
+                    <span class="time">20:00</span>
                     <h3>✈️ טיסת חזור עם אל על</h3>
                     <p>חוזרים לארץ.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== דברים לעשות ===== -->
+        <section class="day">
+            <div class="day-header">
+                <div class="day-num">🎯</div>
+                <h2>דברים לעשות</h2>
+            </div>
+            <div class="timeline">
+                <article class="event">
+                    <span class="time">1</span>
+                    <h3> Chipotle Mexican Grill</h3>
+                    <p>רשת מזון מקסיקני מהיר ואיכותי - בוריטו, באולים וטאקוס. סניף סמוך ל-Leicester Square. כתובת: 114-116 Charing Cross Rd, London WC2H 0JR.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Chipotle+Mexican+Grill+Charing+Cross+Road,+London+WC2H+0JR" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                </article>
+                <article class="event">
+                    <span class="time">2</span>
+                    <h3>🎸 Camden High St.</h3>
+                    <p>רחוב תוסס וצבעוני בצפון לונדון, מלא בחנויות אופנה אלטרנטיבית, שווקים (Camden Market), אוכל רחוב מכל העולם ואווירת מוזיקה ופאנק. כתובת: Camden High St, London NW1.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Camden+High+Street,+London+NW1" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== דברים לקנות ===== -->
+        <section class="day">
+            <div class="day-header">
+                <div class="day-num">🛒</div>
+                <h2>דברים לקנות</h2>
+            </div>
+            <div class="shop-grid">
+                <article class="shop-card">
+                    <img src="img/sephora.png" alt="Sephora">
+                    <div class="shop-body">
+                        <h3>💄 Sephora</h3>
+                        <p>מוצרי איפור, בישום וטיפוח. הסניף המרכזי נמצא ב-Westfield London (Ariel Way, Shepherd's Bush, London W12 7GF), עם סניפים נוספים ברחבי העיר.</p>
+                        <a class="map-btn" href="https://maps.google.com/?q=Sephora+Westfield+London,+Ariel+Way,+London+W12+7GF" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                            פתח ב-Google Maps
+                        </a>
+                    </div>
+                </article>
+                <article class="shop-card">
+                    <img src="img/wholeFoodMarket.png" alt="Whole Foods Market">
+                    <div class="shop-body">
+                        <h3>🥑 Whole Foods Market</h3>
+                        <p>רשת סופרמרקטים אורגניים עם מוצרי בריאות, חטיפים ומזון איכותי. הסניף הגדול ביותר נמצא בקנזינגטון (The Barkers Building, 63-97 Kensington High St, London W8 5SE).</p>
+                        <a class="map-btn" href="https://maps.google.com/?q=Whole+Foods+Market+Kensington,+63-97+Kensington+High+Street,+London+W8+5SE" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                            פתח ב-Google Maps
+                        </a>
+                    </div>
                 </article>
             </div>
         </section>
