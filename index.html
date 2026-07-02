@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="מסלול טיול ללונדון 2–6 ביולי 2026 — מטאליקה, ווסט אנד, אטרקציות, מסעדות וקניות">
+    <meta name="theme-color" content="#0f1e3d">
     <title>London Trip 2026 🇬🇧</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎡</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
@@ -17,8 +20,8 @@
             --white: #ffffff;
             --text: #2b2b2b;
             --text-soft: #5c6470;
-            --shadow: rgba(15, 30, 61, 0.12);
-            --radius: 18px;
+            --shadow: rgba(15, 30, 61, 0.08);
+            --radius: 22px;
         }
 
         * {
@@ -44,6 +47,16 @@
             text-align: center;
             padding: 70px 20px 90px;
             overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(600px 320px at 18% -10%, rgba(212, 175, 55, 0.22), transparent 60%),
+                radial-gradient(520px 280px at 85% 15%, rgba(96, 140, 220, 0.28), transparent 60%);
+            pointer-events: none;
         }
 
         header::after {
@@ -75,7 +88,10 @@
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 16px;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+            background: linear-gradient(120deg, #ffffff 35%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         header .dates {
@@ -220,10 +236,11 @@
         .event {
             position: relative;
             background: var(--white);
+            border: 1px solid rgba(15, 30, 61, 0.07);
             border-radius: var(--radius);
             padding: 22px 24px;
             margin-bottom: 22px;
-            box-shadow: 0 10px 30px var(--shadow);
+            box-shadow: 0 8px 24px var(--shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-right: 5px solid var(--gold);
         }
@@ -243,7 +260,7 @@
 
         .event:hover {
             transform: translateY(-5px);
-            box-shadow: 0 18px 40px rgba(15, 30, 61, 0.2);
+            box-shadow: 0 16px 36px rgba(15, 30, 61, 0.16);
         }
 
         .event .time {
@@ -289,7 +306,8 @@
         .map-btn svg {
             width: 18px;
             height: 18px;
-            fill: var(--gold-light);
+            fill: none;
+            stroke: var(--gold-light);
         }
 
         .map-btn:hover {
@@ -300,7 +318,7 @@
         }
 
         .map-btn:hover svg {
-            fill: var(--navy);
+            stroke: var(--navy);
         }
 
         .web-btn {
@@ -311,7 +329,7 @@
         }
 
         .web-btn svg {
-            fill: var(--navy);
+            stroke: var(--navy);
         }
 
         .web-btn:hover {
@@ -320,7 +338,21 @@
         }
 
         .web-btn:hover svg {
-            fill: var(--gold-light);
+            stroke: var(--gold-light);
+        }
+
+        /* ===== Button Row ===== */
+        .btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .btn-row .map-btn {
+            margin: 0;
+            flex: 1 1 auto;
+            justify-content: center;
         }
 
         /* ===== Shopping Section ===== */
@@ -332,9 +364,10 @@
 
         .shop-card {
             background: var(--white);
+            border: 1px solid rgba(15, 30, 61, 0.07);
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 10px 30px var(--shadow);
+            box-shadow: 0 8px 24px var(--shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-top: 5px solid var(--gold);
             display: flex;
@@ -343,7 +376,7 @@
 
         .shop-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 18px 40px rgba(15, 30, 61, 0.2);
+            box-shadow: 0 16px 36px rgba(15, 30, 61, 0.16);
         }
 
         .shop-card img {
@@ -407,6 +440,10 @@
                 width: 100%;
                 justify-content: center;
             }
+            .web-btn {
+                margin-right: 0;
+                margin-top: 8px;
+            }
             .date-nav {
                 gap: 8px;
                 margin-top: 24px;
@@ -430,15 +467,163 @@
                 display: none;
             }
         }
+
+        /* ===== Today Highlight ===== */
+        .is-today .day-num {
+            animation: pulse-gold 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-gold {
+            0%, 100% { box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35); }
+            50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0), 0 8px 20px rgba(212, 175, 55, 0.6); }
+        }
+
+        .today-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--navy);
+            font-size: 0.8rem;
+            font-weight: 900;
+            padding: 3px 12px;
+            border-radius: 50px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .date-nav a.is-today-link {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-color: var(--gold);
+        }
+
+        .date-nav a.is-today-link .dn-day,
+        .date-nav a.is-today-link .dn-date {
+            color: var(--navy);
+        }
+
+        /* ===== Done Checkboxes ===== */
+        .done-check {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .done-check input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .done-check span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            background: var(--white);
+            color: transparent;
+            font-size: 0.95rem;
+            font-weight: 900;
+            transition: all 0.25s ease;
+        }
+
+        .done-check input:checked + span {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--navy);
+        }
+
+        .done-check input:focus-visible + span {
+            outline: 2px solid var(--navy);
+            outline-offset: 2px;
+        }
+
+        .shop-card {
+            position: relative;
+        }
+
+        .event:has(.done-check input:checked),
+        .shop-card:has(.done-check input:checked) {
+            opacity: 0.55;
+        }
+
+        .event:has(.done-check input:checked) h3,
+        .shop-card:has(.done-check input:checked) h3 {
+            text-decoration: line-through;
+        }
+
+        /* ===== Scroll Reveal ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* ===== Back To Top ===== */
+        #backToTop {
+            position: fixed;
+            bottom: 22px;
+            left: 22px;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--gold-light);
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(15, 30, 61, 0.35);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s, background 0.3s ease, color 0.3s ease;
+            z-index: 50;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+        }
+
+        #backToTop:hover {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--navy);
+        }
     </style>
 </head>
 <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <symbol id="icon-pin" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+            <symbol id="icon-globe" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+        </defs>
+    </svg>
     <header>
         <span class="badge">Travel Itinerary</span>
         <h1>London Trip 2026 🇬🇧</h1>
         <p class="dates">2.7.2026 — 6.7.2026</p>
         <div class="gold-line"></div>
         <nav class="date-nav" aria-label="ניווט לפי תאריך">
+            <a href="#day-1"><span class="dn-day">חמישי</span><span class="dn-date">2.7</span></a>
             <a href="#day-2"><span class="dn-day">שישי</span><span class="dn-date">3.7</span></a>
             <a href="#day-3"><span class="dn-day">שבת</span><span class="dn-date">4.7</span></a>
             <a href="#day-4"><span class="dn-day">ראשון</span><span class="dn-date">5.7</span></a>
@@ -467,10 +652,10 @@
                     <h3>🏨 צ'ק-אין במלון</h3>
                     <p>התארגנות ומנוחה במלון Premier Inn London King's Cross. מלון מרכזי ונוח במרחק הליכה קצר מתחנת הרכבת King's Cross / St Pancras, קרוב לתחבורה ציבורית ולאטרקציות. כתובת: 26-30 York Way, London N1 9AA.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Premier+Inn+London+King's+Cross,+26-30+York+Way,+London+N1+9AA" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.premierinn.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.premierinn.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
             </div>
         </section>
@@ -483,34 +668,34 @@
             </div>
             <div class="timeline">
                 <article class="event">
-                    <span class="time">12:00</span>
-                    <h3>🎡 London Eye</h3>
-                    <p>פתיחת היום עם גלגל הענק המפורסם של לונדון על גדת הנהר — תצפית פנורמית מרהיבה על העיר. סבב אחד נמשך כ-30 דקות. כתובת: Riverside Building, County Hall, London SE1 7PB.</p>
-                    <a class="map-btn" href="https://maps.google.com/?q=London+Eye,+Riverside+Building,+County+Hall,+London+SE1+7PB" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
-                        פתח ב-Google Maps
-                    </a>
-                    <a class="map-btn web-btn" href="https://www.londoneye.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
-                </article>
-                <article class="event">
                     <span class="time">10:15</span>
                     <h3>🏰 The London Dungeon</h3>
                     <p>אטרקציה אינטראקטיבית ומצמררת המגוללת את ההיסטוריה האפלה של לונדון עם שחקנים חיים, אפקטים מיוחדים ורכבת מתחת לאדמה. צמוד ל-London Eye. כתובת: Riverside Building, County Hall, London SE1 7PB.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=The+London+Dungeon,+County+Hall,+London+SE1+7PB" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.thedungeons.com/london" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.thedungeons.com/london" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                </article>
+                <article class="event">
+                    <span class="time">12:00</span>
+                    <h3>🎡 London Eye</h3>
+                    <p>פתיחת היום עם גלגל הענק המפורסם של לונדון על גדת הנהר — תצפית פנורמית מרהיבה על העיר. סבב אחד נמשך כ-30 דקות. כתובת: Riverside Building, County Hall, London SE1 7PB.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=London+Eye,+Riverside+Building,+County+Hall,+London+SE1+7PB" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                    <a class="map-btn web-btn" href="https://www.londoneye.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
                     <span class="time">14:00</span>
                     <h3>🍛 ארוחת צהריים במסעדת Dishoom</h3>
                     <p>מסעדה הודית פופולרית באווירת בומביי — צמוד למלון באזור King's Cross. 5 Stable Street, London N1C 4AB.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Dishoom+King's+Cross,+5+Stable+Street,+London+N1C+4AB" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.dishoom.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.dishoom.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
                     <span class="time">15:30</span>
@@ -522,7 +707,7 @@
                     <h3>🚇 יציאה לכיוון האצטדיון האולימפי</h3>
                     <p>יוצאים מהמלון לכיוון Stratford. נסיעה ברכבת התחתית מ-King's Cross כ-25 דקות.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=London+Olympic+Stadium" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
                 </article>
@@ -531,7 +716,7 @@
                     <h3>🎸 הופעה של מטאליקה (M72 World Tour)</h3>
                     <p>ערב ראשון של ההופעה המטורפת באצטדיון האולימפי בלונדון.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=London+Olympic+Stadium" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
                 </article>
@@ -550,7 +735,7 @@
                     <h3>🎡 Piccadilly Circus</h3>
                     <p>מתחילים את היום באחד הצמתים המפורסמים בלונדון — מסכי הניאון, מזרקת ארוס והאווירה התוססת. נקודת פתיחה מצוינת לחקור את הווסט אנד ברגל.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Piccadilly+Circus,+London+W1J+9HS" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
                 </article>
@@ -559,49 +744,50 @@
                     <h3>👽 Forbidden Planet</h3>
                     <p>חנות הקאלט הגדולה בלונדון לקומיקס, מדע בדיוני, פיגרים ומרצ'נדייז — במרחק הליכה קצר. 179 Shaftesbury Ave, London WC2H 8JR.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Forbidden+Planet,+179+Shaftesbury+Avenue,+London+WC2H+8JR" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://forbiddenplanet.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://forbiddenplanet.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
                     <span class="time">12:15</span>
                     <h3>🐰 Alice Through The Looking Glass</h3>
                     <p>חנות מקסימה המוקדשת לעולמה של "עליסה בארץ הפלאות" — מתנות, מזכרות ופריטי אספנות ייחודיים. ממוקמת בשוק קובנט גארדן, במרחק הליכה. כתובת: The Piazza, Covent Garden, London WC2E 8RB.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Alice+Through+The+Looking+Glass+Covent+Garden,+London+WC2E+8RB" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.coventgarden.london" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.coventgarden.london" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
                     <span class="time">13:00</span>
                     <h3>🍝 ארוחת צהריים - Jamie's Italian Leicester Square</h3>
                     <p>ארוחה איטלקית קלאסית באווירה טובה, בלב Leicester Square. 17-18 Irving St, London WC2H 7AU, בריטניה.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Jamie's+Italian+Leicester+Square,+17-18+Irving+St,+London+WC2H+7AU" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.jamieoliver.com/restaurants" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.jamieoliver.com/restaurants" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
                     <span class="time">14:00</span>
                     <h3>🍫 M&M's World London</h3>
                     <p>חנות הענק של M&M's על פני 4 קומות בלב Leicester Square — קיר ענק של ממתקים בכל הצבעים, מרצ'נדייז וצילומים מהנים. כתובת: 1 Swiss Court, Leicester Square, London W1D 6AP.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=M%26M's+World+London,+1+Swiss+Court,+Leicester+Square,+London+W1D+6AP" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.mms.com/en-gb/mms-store-london" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.mms.com/en-gb/mms-store-london" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
                     <span class="time">14:30</span>
                     <h3>🎭 Leicester Square & Covent Garden</h3>
                     <p>הסתובבות בכיכר Leicester Square התוססת ושיטוט בשוק המקורה של קובנט גארדן. הכל במרחק הליכה.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Covent+Garden+London+WC2E+8RB" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.coventgarden.london" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.coventgarden.london" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
                     <span class="time">16:30</span>
@@ -613,10 +799,10 @@
                     <h3>🪲 המחזמר Beetlejuice</h3>
                     <p>המחזמר המוזיקלי המצליח Beetlejuice the Musical בתיאטרון Savoy Theatre ב-West End. קומדיה מטורפת וסוחפת המבוססת על סרטו של טים ברטון, עם אפקטים מרהיבים ומוזיקה מקורית. משך המופע כ-2.5 שעות. כתובת: Savoy Theatre, Savoy Court, Strand, London WC2R 0ET.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Savoy+Theatre,+Savoy+Court,+Strand,+London+WC2R+0ET" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://beetlejuicethemusical.co.uk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://beetlejuicethemusical.co.uk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
             </div>
         </section>
@@ -633,30 +819,30 @@
                     <h3>🌸 גן קיוטו (Kyoto Garden)</h3>
                     <p>בוקר רגוע בגן יפני מרהיב בלב Holland Park, עם מפל מים, בריכת נוי, דגי קוי וטווסים. כניסה חופשית, פתיחה מושלמת ליום. כתובת: Holland Park, Ilchester Place, London W8 6LU.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Kyoto+Garden+Holland+Park,+Ilchester+Place,+London+W8+6LU" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.rbkc.gov.uk/leisure-and-culture/parks/holland-park" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.rbkc.gov.uk/leisure-and-culture/parks/holland-park" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
                     <span class="time">12:45</span>
                     <h3>🌇 תצפית Sky Garden</h3>
                     <p>נסיעה מזרחה אל ה-City לתצפית פנורמית מרהיבה על לונדון מהגינה הגבוהה בעיר (כניסה עם כרטיס מוזמן מראש). 20 Fenchurch St, London EC3M 8AF.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Sky+Garden,+20+Fenchurch+St,+London+EC3M+8AF" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://skygarden.london" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://skygarden.london" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
                     <span class="time">14:00</span>
                     <h3>🍔 ארוחת צהריים ב-City</h3>
                     <p>ארוחה קלה באזור Leadenhall Market ההיסטורי והמרשים, צמוד ל-Sky Garden.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Leadenhall+Market,+London+EC3V+1LT" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.leadenhallmarket.co.uk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.leadenhallmarket.co.uk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
                     <span class="time">15:30</span>
@@ -668,7 +854,7 @@
                     <h3>🚇 יציאה לכיוון האצטדיון האולימפי</h3>
                     <p>יוצאים מהמלון לכיוון Stratford להופעה השנייה.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=London+Olympic+Stadium" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
                 </article>
@@ -677,10 +863,10 @@
                     <h3>🎸 הופעה של מטאליקה (M72 World Tour)</h3>
                     <p>ערב שני וסוגר של ההופעה באצטדיון האולימפי בלונדון.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=London+Olympic+Stadium" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.metallica.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.metallica.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
             </div>
         </section>
@@ -702,17 +888,17 @@
                     <h3>🦕 מוזיאון ההיסטוריה של הטבע</h3>
                     <p>כניסה למוזיאון המפורסם בדרום קנזינגטון (10:30–12:30), עם כרטיס מוזמן מראש.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Natural+History+Museum+London" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.nhm.ac.uk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.nhm.ac.uk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
                     <span class="time">13:00</span>
                     <h3>🛍️ ארוחה וקניות אחרונות</h3>
                     <p>ארוחת צהריים וזמן חופשי באזור South Kensington / Kensington High Street לקניות אחרונות (Whole Foods, Sephora ועוד), לפני החזרה למלון.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Kensington+High+Street,+London+W8" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
                 </article>
@@ -737,43 +923,47 @@
             </div>
             <div class="timeline">
                 <article class="event">
+                    <label class="done-check"><input type="checkbox" data-key="todo-1" aria-label="סמן כבוצע"><span>✔</span></label>
                     <span class="time">1</span>
                     <h3> Chipotle Mexican Grill</h3>
                     <p>רשת מזון מקסיקני מהיר ואיכותי - בוריטו, באולים וטאקוס. סניף סמוך ל-Leicester Square. כתובת: 114-116 Charing Cross Rd, London WC2H 0JR.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Chipotle+Mexican+Grill+Charing+Cross+Road,+London+WC2H+0JR" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.chipotle.co.uk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.chipotle.co.uk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
+                    <label class="done-check"><input type="checkbox" data-key="todo-2" aria-label="סמן כבוצע"><span>✔</span></label>
                     <span class="time">2</span>
                     <h3>🚤 London Eye River Cruise</h3>
                     <p>שייט נהר מודרך לאורך התמזה (כ-40 דקות) עם נוף לבית הפרלמנט, ביג בן, גשר לונדון ומגדל לונדון. ההמראה ממזח London Eye Pier, צמוד לגלגל.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=London+Eye+Pier,+London+SE1+7PB" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
                 </article>
                 <article class="event">
+                    <label class="done-check"><input type="checkbox" data-key="todo-3" aria-label="סמן כבוצע"><span>✔</span></label>
                     <span class="time">3</span>
                     <h3>🎸 Camden High St.</h3>
                     <p>רחוב תוסס וצבעוני בצפון לונדון, מלא בחנויות אופנה אלטרנטיבית, שווקים (Camden Market), אוכל רחוב מכל העולם ואווירת מוזיקה ופאנק. כתובת: Camden High St, London NW1.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Camden+High+Street,+London+NW1" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.camdenmarket.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.camdenmarket.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
+                    <label class="done-check"><input type="checkbox" data-key="todo-4" aria-label="סמן כבוצע"><span>✔</span></label>
                     <span class="time">4</span>
                     <h3>🍩 Donutelier</h3>
                     <p>חנות דונאטס בוטיק יוקרתית בלונדון עם דונאטס קלאסיים וגורמה מעוצבים ביד, קפה ומאפים. כתובת: 9 Lower James St, Soho, London W1F 9EH.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Donutelier,+9+Lower+James+St,+Soho,+London+W1F+9EH" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.donutelier.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.donutelier.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
             </div>
         </section>
@@ -786,27 +976,33 @@
             </div>
             <div class="shop-grid">
                 <article class="shop-card">
+                    <label class="done-check"><input type="checkbox" data-key="buy-1" aria-label="סמן כנקנה"><span>✔</span></label>
                     <img src="img/sephora.png" alt="Sephora">
                     <div class="shop-body">
                         <h3>💄 Sephora</h3>
                         <p>מוצרי איפור, בישום וטיפוח. הסניף המרכזי נמצא ב-Westfield London (Ariel Way, Shepherd's Bush, London W12 7GF), עם סניפים נוספים ברחבי העיר.</p>
-                        <a class="map-btn" href="https://maps.google.com/?q=Sephora+Westfield+London,+Ariel+Way,+London+W12+7GF" target="_blank" rel="noopener">
-                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
-                            פתח ב-Google Maps
-                        </a>
-                        <a class="map-btn web-btn" href="https://www.sephora.co.uk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                        <div class="btn-row">
+                            <a class="map-btn" href="https://maps.google.com/?q=Sephora+Westfield+London,+Ariel+Way,+London+W12+7GF" target="_blank" rel="noopener">
+                                <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                                פתח ב-Google Maps
+                            </a>
+                            <a class="map-btn web-btn" href="https://www.sephora.co.uk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                        </div>
                     </div>
                 </article>
                 <article class="shop-card">
+                    <label class="done-check"><input type="checkbox" data-key="buy-2" aria-label="סמן כנקנה"><span>✔</span></label>
                     <img src="img/wholeFoodMarket.png" alt="Whole Foods Market">
                     <div class="shop-body">
                         <h3>🥑 Whole Foods Market</h3>
                         <p>רשת סופרמרקטים אורגניים עם מוצרי בריאות, חטיפים ומזון איכותי. הסניף הגדול ביותר נמצא בקנזינגטון (The Barkers Building, 63-97 Kensington High St, London W8 5SE).</p>
-                        <a class="map-btn" href="https://maps.google.com/?q=Whole+Foods+Market+Kensington,+63-97+Kensington+High+Street,+London+W8+5SE" target="_blank" rel="noopener">
-                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
-                            פתח ב-Google Maps
-                        </a>
-                        <a class="map-btn web-btn" href="https://www.wholefoodsmarket.co.uk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4zM4.26 14a7.96 7.96 0 010-4h3.38a16.5 16.5 0 000 4H4.26zm.81 2h2.95c.31 1.27.78 2.46 1.38 3.56A8.03 8.03 0 015.07 16zM8.02 8H5.07A8.03 8.03 0 019.4 4.44 15.65 15.65 0 008.02 8zM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82A13.4 13.4 0 0112 20zm2.34-6H9.66a14.4 14.4 0 010-4h4.68a14.4 14.4 0 010 4zm.25 5.56c.6-1.1 1.07-2.29 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38a7.96 7.96 0 010 4h-3.38z"/></svg>אתר רשמי</a>
+                        <div class="btn-row">
+                            <a class="map-btn" href="https://maps.google.com/?q=Whole+Foods+Market+Kensington,+63-97+Kensington+High+Street,+London+W8+5SE" target="_blank" rel="noopener">
+                                <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                                פתח ב-Google Maps
+                            </a>
+                            <a class="map-btn web-btn" href="https://www.wholefoodsmarket.co.uk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                        </div>
                     </div>
                 </article>
             </div>
@@ -816,7 +1012,9 @@
             <p>נסיעה טובה ובטוחה! ✦ London 2026</p>
         </footer>
     </main>
+    <button id="backToTop" aria-label="חזרה לראש העמוד">↑</button>
     <script>
+        // חזרה למעלה בלחיצה על מספר היום
         document.querySelectorAll('.day-num').forEach(function (el) {
             el.setAttribute('role', 'button');
             el.setAttribute('aria-label', 'חזרה לראש העמוד');
@@ -824,6 +1022,67 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
+
+        // הדגשת היום הנוכחי בטיול
+        (function () {
+            var days = { 'day-1': '2026-07-02', 'day-2': '2026-07-03', 'day-3': '2026-07-04', 'day-4': '2026-07-05', 'day-5': '2026-07-06' };
+            var now = new Date();
+            var today = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+            Object.keys(days).forEach(function (id) {
+                if (days[id] !== today) return;
+                var section = document.getElementById(id);
+                if (!section) return;
+                section.classList.add('is-today');
+                var badge = document.createElement('span');
+                badge.className = 'today-badge';
+                badge.textContent = 'היום';
+                section.querySelector('.day-header h2').appendChild(badge);
+                var link = document.querySelector('.date-nav a[href="#' + id + '"]');
+                if (link) link.classList.add('is-today-link');
+            });
+        })();
+
+        // צ'קבוקסים עם שמירה מקומית
+        (function () {
+            var KEY = 'london2026-checks';
+            var saved = {};
+            try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { }
+            document.querySelectorAll('.done-check input').forEach(function (cb) {
+                cb.checked = !!saved[cb.dataset.key];
+                cb.addEventListener('change', function () {
+                    saved[cb.dataset.key] = cb.checked;
+                    try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) { }
+                });
+            });
+        })();
+
+        // אנימציית הופעה בגלילה
+        (function () {
+            if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            document.querySelectorAll('.event, .shop-card').forEach(function (card) {
+                card.classList.add('reveal');
+                io.observe(card);
+            });
+        })();
+
+        // כפתור חזרה למעלה
+        (function () {
+            var btn = document.getElementById('backToTop');
+            window.addEventListener('scroll', function () {
+                btn.classList.toggle('show', window.scrollY > 400);
+            }, { passive: true });
+            btn.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
     </script>
 </body>
 </html>
